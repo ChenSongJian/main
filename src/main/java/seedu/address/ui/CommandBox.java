@@ -3,6 +3,12 @@ package seedu.address.ui;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Region;
+
 import org.controlsfx.control.textfield.TextFields;
 
 import seedu.address.commons.core.LogsCenter;
@@ -13,11 +19,6 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Region;
 
 /**
  * The UI component that is responsible for receiving user command inputs.
