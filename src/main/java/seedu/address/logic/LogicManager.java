@@ -1,9 +1,10 @@
 package seedu.address.logic;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import java.util.ArrayList;
 import javafx.collections.ObservableList;
+
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
@@ -60,7 +61,7 @@ public class LogicManager extends ComponentManager implements Logic {
     }
 
     @Override
-    public ArrayList<String> getCommandList(){
+    public ArrayList<String> getCommandList() {
         ArrayList<String> commandList = new ArrayList<String>();
 
         commandList.add(AddCommand.COMMAND_WORD);
