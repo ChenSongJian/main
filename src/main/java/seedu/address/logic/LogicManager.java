@@ -1,5 +1,11 @@
 package seedu.address.logic;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
@@ -28,11 +34,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 /**
  * The main LogicManager of the app.
@@ -77,12 +78,7 @@ public class LogicManager extends ComponentManager implements Logic {
     public ArrayList<String> getCommandList() {
         ArrayList<String> commandList = new ArrayList<String>();
         commandList.add(AddCommand.COMMAND_WORD);
-        commandList.add(AddCommand.COMMAND_WORD + " "
-                + PREFIX_NAME + " "
-                + PREFIX_PHONE + " "
-                +  PREFIX_EMAIL + " "
-                + PREFIX_ADDRESS + " "
-                + PREFIX_TAG);
+        commandList.add(AddCommand.COMMAND_WORD + " " + PREFIX_NAME + " " + PREFIX_PHONE + " " +  PREFIX_EMAIL + " " + PREFIX_ADDRESS + " " + PREFIX_TAG);
         /*commandList.add(AddExpenseCommand.COMMAND_WORD);
         commandList.add(AddExpenseCommand.COMMAND_WORD + " "
                 + PREFIX_EXPENSE_CATEGORY + " "
@@ -97,12 +93,7 @@ public class LogicManager extends ComponentManager implements Logic {
         //commandList.add(DeleteExpenseCommand.COMMAND_WORD);
         //commandList.add(DeleteExpenseCommand.COMMAND_WORD + "INDEX");
         commandList.add(EditCommand.COMMAND_WORD);
-        commandList.add(EditCommand.COMMAND_WORD + " INDEX "
-                + PREFIX_NAME + " "
-                + PREFIX_PHONE + " "
-                +  PREFIX_EMAIL + " "
-                + PREFIX_ADDRESS + " "
-                + PREFIX_TAG);
+        commandList.add(EditCommand.COMMAND_WORD + " INDEX " + PREFIX_NAME + " " + PREFIX_PHONE + " " + PREFIX_EMAIL + " " + PREFIX_ADDRESS + " " + PREFIX_TAG);
         commandList.add(ExitCommand.COMMAND_WORD);
         commandList.add(FindCommand.COMMAND_WORD);
         commandList.add(FindCommand.COMMAND_WORD + " KEYWORD");
