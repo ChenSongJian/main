@@ -13,11 +13,19 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.event.Date;
+import seedu.address.model.event.EventName;
+import seedu.address.model.event.Time;
+import seedu.address.model.eventContacts.EventContacts;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.Body;
+import seedu.address.model.task.DateTime;
+import seedu.address.model.task.Priority;
+import seedu.address.model.task.TaskName;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -135,5 +143,146 @@ public class ParserUtil {
             throw new ParseException(MESSAGE_INVALID_PATH);
         }
         return Optional.ofNullable(Paths.get(stringPath));
+    }
+
+    /**
+     * Parses a {@code String name} into a {@code TaskName}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static TaskName parseTaskName(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!Name.isValidName(trimmedName)) {
+            throw new ParseException(Name.MESSAGE_NAME_CONSTRAINTS);
+        }
+        return new TaskName(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String body} into a {@codeBody}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code body} is invalid.
+     */
+    public static Body parseBody(String body) throws ParseException {
+        return new Body(body);
+    }
+
+    /**
+     * Parses a {@code String stareDateTime } into an {@code DateTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code startDateTime} is invalid.
+     */
+    public static DateTime parseDateTime(String startDateTime) throws ParseException {
+        requireNonNull(startDateTime);
+        String trimmedStartDateTime = startDateTime.trim();
+        if (!DateTime.isValidDateTime(trimmedStartDateTime)) {
+            throw new ParseException(DateTime.MESSAGE_DATETIME_CONSTRAINTS);
+        }
+        return new DateTime(trimmedStartDateTime);
+    }
+
+    /**
+     * Parses a {@code String endDateTime} into an {@code DateTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code endDateTime} is invalid.
+     */
+    public static DateTime parseTagDateTime(String endDateTime) throws ParseException {
+        requireNonNull(endDateTime);
+        String trimmedEndDateTime = endDateTime.trim();
+        if (!DateTime.isValidDateTime(trimmedEndDateTime)) {
+            throw new ParseException(DateTime.MESSAGE_DATETIME_CONSTRAINTS);
+        }
+        return new DateTime(trimmedEndDateTime);
+    }
+
+    /**
+     * Parses a {@code String priority} into an {@code Priority}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code priority} is invalid.
+     */
+    public static Priority parsePriority(String priority) throws ParseException {
+        String trimmedPriority = priority.trim();
+        if (!Priority.isValidPriority(trimmedPriority)) {
+            throw new ParseException(Priority.MESSAGE_PRIORITY_CONSTRAINTS);
+        }
+        return new Priority(trimmedPriority);
+    }
+
+    /**
+     * Parses a {@code String name} into a {@code EventName}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static EventName parseEventName(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!Name.isValidName(trimmedName)) {
+            throw new ParseException(Name.MESSAGE_NAME_CONSTRAINTS);
+        }
+        return new EventName(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String eventDate} into an {@code Event Date}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code eventDate} is invalid.
+     */
+    public static Date parseEventDate(String eventDate) throws ParseException {
+        requireNonNull(eventDate);
+        String trimmedEventDate = eventDate.trim();
+        if (!Date.isValidDate(trimmedEventDate)) {
+            throw new ParseException(Date.MESSAGE_EVENT_DATE_CONSTRAINTS);
+        }
+        return new Date(trimmedEventDate);
+    }
+
+    /**
+     * Parses a {@code String eventTime} into an {@code Event Time}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code eventTime} is invalid.
+     */
+    public static Time parseEventTime(String eventTime) throws ParseException {
+        requireNonNull(eventTime);
+        String trimmedEventTime = eventTime.trim();
+        if (!Time.isValidTime(trimmedEventTime)) {
+            throw new ParseException(Time.MESSAGE_EVENT_TIME_CONSTRAINTS);
+        }
+        return new Time(trimmedEventTime);
+    }
+
+    /**
+     * Parses a {@code String eventContacts} into a {@code EventContacts}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code eventContacts} is invalid.
+     */
+    public static EventContacts parseEventContacts(String eventContacts) throws ParseException {
+        requireNonNull(eventContacts);
+        String trimmedEventContacts = eventContacts.trim();
+        if (!Tag.isValidTagName(trimmedEventContacts)) {
+            throw new ParseException(EventContacts.MESSAGE_EVENT_CONTACTS_CONSTRAINTS);
+        }
+        return new EventContacts(trimmedEventContacts);
+    }
+
+    /**
+     * Parses {@code Collection<String> eventContacts} into a {@code Set<EventContacts>}.
+     */
+    public static Set<EventContacts> parseEventContacts(Collection<String> eventContacts) throws ParseException {
+        requireNonNull(eventContacts);
+        final Set<EventContacts> eventContactsSet = new HashSet<>();
+        for (String eventContactsName : eventContacts) {
+            eventContactsSet.add(parseEventContacts(eventContactsName));
+        }
+        return eventContactsSet;
     }
 }

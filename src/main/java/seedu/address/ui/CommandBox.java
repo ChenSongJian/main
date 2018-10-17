@@ -3,6 +3,7 @@ package seedu.address.ui;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+
 import org.controlsfx.control.textfield.TextFields;
 
 import seedu.address.commons.core.LogsCenter;
@@ -42,7 +43,7 @@ public class CommandBox extends UiPart<Region> {
         this.commandList = logic.getCommandList();
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
-
+        
         //@@ChenSongJian
         TextFields.bindAutoCompletion(commandTextField, commandList -> {
             return commandList.getUserText().isEmpty() ? null : this.commandList.stream().filter(command -> {

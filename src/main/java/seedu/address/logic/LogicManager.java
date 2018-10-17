@@ -8,13 +8,11 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
-//import seedu.address.logic.commands.AddExpenseCommand;
 import seedu.address.logic.commands.BackupCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.DeleteCommand;
-//import seedu.address.logic.commands.DeleteExpenseCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
@@ -108,6 +106,27 @@ public class LogicManager extends ComponentManager implements Logic {
         return commandList;
     }
     //@@
+
+    @Override
+    public ArrayList<String> getCommandList() {
+        ArrayList<String> commandList = new ArrayList<String>();
+
+        commandList.add(AddCommand.COMMAND_WORD);
+        commandList.add(BackupCommand.COMMAND_WORD);
+        commandList.add(ClearCommand.COMMAND_WORD);
+        commandList.add(DeleteCommand.COMMAND_WORD);
+        commandList.add(EditCommand.COMMAND_WORD);
+        commandList.add(ExitCommand.COMMAND_WORD);
+        commandList.add(FindCommand.COMMAND_WORD);
+        commandList.add(HelpCommand.COMMAND_WORD);
+        commandList.add(HistoryCommand.COMMAND_WORD);
+        commandList.add(ListCommand.COMMAND_WORD);
+        commandList.add(RedoCommand.COMMAND_WORD);
+        commandList.add(SelectCommand.COMMAND_WORD);
+        commandList.add(UndoCommand.COMMAND_WORD);
+
+        return commandList;
+    }
 
     @Override
     public ListElementPointer getHistorySnapshot() {
