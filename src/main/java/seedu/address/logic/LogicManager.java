@@ -78,7 +78,12 @@ public class LogicManager extends ComponentManager implements Logic {
     public ArrayList<String> getCommandList() {
         ArrayList<String> commandList = new ArrayList<String>();
         commandList.add(AddCommand.COMMAND_WORD);
-        commandList.add(AddCommand.COMMAND_WORD + " " + PREFIX_NAME + " " + PREFIX_PHONE + " " +  PREFIX_EMAIL + " " + PREFIX_ADDRESS + " " + PREFIX_TAG);
+        commandList.add(AddCommand.COMMAND_WORD + " "
+                + PREFIX_NAME + " "
+                + PREFIX_PHONE + " "
+                + PREFIX_EMAIL + " "
+                + PREFIX_ADDRESS + " "
+                + PREFIX_TAG);
         /*commandList.add(AddExpenseCommand.COMMAND_WORD);
         commandList.add(AddExpenseCommand.COMMAND_WORD + " "
                 + PREFIX_EXPENSE_CATEGORY + " "
@@ -93,7 +98,12 @@ public class LogicManager extends ComponentManager implements Logic {
         //commandList.add(DeleteExpenseCommand.COMMAND_WORD);
         //commandList.add(DeleteExpenseCommand.COMMAND_WORD + "INDEX");
         commandList.add(EditCommand.COMMAND_WORD);
-        commandList.add(EditCommand.COMMAND_WORD + " INDEX " + PREFIX_NAME + " " + PREFIX_PHONE + " " + PREFIX_EMAIL + " " + PREFIX_ADDRESS + " " + PREFIX_TAG);
+        commandList.add(EditCommand.COMMAND_WORD + " INDEX "
+                + PREFIX_NAME + " "
+                + PREFIX_PHONE + " "
+                + PREFIX_EMAIL + " "
+                + PREFIX_ADDRESS + " "
+                + PREFIX_TAG);
         commandList.add(ExitCommand.COMMAND_WORD);
         commandList.add(FindCommand.COMMAND_WORD);
         commandList.add(FindCommand.COMMAND_WORD + " KEYWORD");
