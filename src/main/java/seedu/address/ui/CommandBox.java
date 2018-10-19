@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 
 import javafx.collections.ObservableList;
@@ -30,6 +31,7 @@ public class CommandBox extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(CommandBox.class);
     private final Logic logic;
     private ListElementPointer historySnapshot;
+    private AutoCompletionBinding autoCompletionBinding;
 
     private ArrayList<String> commandList;
 
@@ -43,7 +45,7 @@ public class CommandBox extends UiPart<Region> {
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
         //@@ChenSongJian
-        TextFields.bindAutoCompletion(commandTextField, commandList -> {
+        autoCompletionBinding = TextFields.bindAutoCompletion(commandTextField, commandList -> {
             return commandList.getUserText().isEmpty() ? null : this.commandList.stream().filter(command -> {
                 return command.toLowerCase().startsWith(commandList.getUserText().toLowerCase());
             }).collect(Collectors.toList());
@@ -160,6 +162,10 @@ public class CommandBox extends UiPart<Region> {
         }
 
         styleClass.add(ERROR_STYLE_CLASS);
+    }
+
+    public void offAutoComplete() {
+        this.autoCompletionBinding.dispose();
     }
 
 }
