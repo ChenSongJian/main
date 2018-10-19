@@ -44,7 +44,7 @@ public class CommandBox extends UiPart<Region> {
         this.commandList = logic.getCommandList();
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
-        //@@ChenSongJian
+        //@@ ChenSongJian
         autoCompletionBinding = TextFields.bindAutoCompletion(commandTextField, commandList -> {
             return commandList.getUserText().isEmpty() ? null : this.commandList.stream().filter(command -> {
                 return command.toLowerCase().startsWith(commandList.getUserText().toLowerCase());
@@ -163,9 +163,9 @@ public class CommandBox extends UiPart<Region> {
 
         styleClass.add(ERROR_STYLE_CLASS);
     }
-
+    //@@author ChenSongJian
     public void offAutoComplete() {
         this.autoCompletionBinding.dispose();
     }
-
+    //@@
 }

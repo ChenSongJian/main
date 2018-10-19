@@ -1088,7 +1088,7 @@ Use case ends.
 +
 Use case ends.
 
-//@@ChenSongJian
+//@@ ChenSongJian
 [discrete]
 === Use case: Add Expense(UC11)
 
