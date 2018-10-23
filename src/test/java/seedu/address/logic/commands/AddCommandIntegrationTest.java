@@ -24,7 +24,9 @@ public class AddCommandIntegrationTest {
     private CommandHistory commandHistory = new CommandHistory();
 
     @Before
-    public void setUp() { model = new ModelManager(getTypicalAddressBook(), new ExpenseBook(), new UserPrefs()); }
+    public void setUp() {
+        model = new ModelManager(getTypicalAddressBook(), new ExpenseBook(), new UserPrefs());
+    }
 
     @Test
     public void execute_newPerson_success() {

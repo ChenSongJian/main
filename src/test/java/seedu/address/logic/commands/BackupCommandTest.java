@@ -38,7 +38,7 @@ public class BackupCommandTest {
 
         userPrefs.setAddressBookBackupFilePath(tempBackupFilePath);
         System.out.println(userPrefs.getAddressBookBackupFilePath());
-        model = new ModelManager(getTypicalAddressBook(),expenseBook , userPrefs);
+        model = new ModelManager(getTypicalAddressBook(), expenseBook, userPrefs);
         expectedModel = new ModelManager(getTypicalAddressBook(), expenseBook, userPrefs);
     }
 

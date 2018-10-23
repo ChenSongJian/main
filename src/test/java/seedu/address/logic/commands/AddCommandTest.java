@@ -105,6 +105,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void resetData(ReadOnlyExpenseBook newData) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ReadOnlyAddressBook getAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
@@ -223,11 +228,6 @@ public class AddCommandTest {
         //======== Expense ============================================================================================
 
         @Override
-        public void resetData(ReadOnlyExpenseBook newData) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public ReadOnlyExpenseBook getExpenseBook() {
             throw new AssertionError("This method should not be called.");
         }
@@ -263,10 +263,14 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean canRedoExpenseBook() { throw new AssertionError("This method should not be called."); }
+        public boolean canRedoExpenseBook() {
+            throw new AssertionError("This method should not be called.");
+        }
 
         @Override
-        public void undoExpenseBook() { throw new AssertionError("This method should not be called."); }
+        public void undoExpenseBook() {
+            throw new AssertionError("This method should not be called.");
+        }
 
         @Override
         public void redoExpenseBook() {
