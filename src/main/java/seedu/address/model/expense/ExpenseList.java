@@ -44,6 +44,14 @@ public class ExpenseList implements Iterable<Expense> {
     }
 
     /**
+     * Replaces the contents of this list with {@code expenses}.
+     */
+    public void setExpenses(List<Expense> expenses) {
+        requireAllNonNull(expenses);
+        internalList.setAll(expenses);
+    }
+
+    /**
      * Removes the equivalent expense from the list.
      * The expense must exist in the list.
      */
@@ -54,14 +62,6 @@ public class ExpenseList implements Iterable<Expense> {
         }
     }
 
-
-    /**
-     * Replaces the contents of this list with {@code expenses}.
-     */
-    public void setExpenses(List<Expense> expenses) {
-        requireAllNonNull(expenses);
-        internalList.setAll(expenses);
-    }
 
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
