@@ -60,13 +60,22 @@ public class ModelManager extends ComponentManager implements Model {
         this.userPrefs = userPrefs;
     }
 
-    public ModelManager() { this(new AddressBook(), new ExpenseBook(), new UserPrefs()); }
+    public ModelManager() {
+        this(new AddressBook(), new ExpenseBook(), new UserPrefs());
+    }
 
     @Override
     public void resetData(ReadOnlyAddressBook newData) {
         versionedAddressBook.resetData(newData);
         indicateAddressBookChanged();
     }
+
+    @Override
+    public void resetData(ReadOnlyExpenseBook newData) {
+        versionedExpenseBook.resetData(newData);
+        indicateExpenseBookChanged();
+    }
+
 
     @Override
     public ReadOnlyAddressBook getAddressBook() {
@@ -264,11 +273,6 @@ public class ModelManager extends ComponentManager implements Model {
 
     //@@author ChenSongJian
     //=========== Expense =================================================================================
-    @Override
-    public void resetData(ReadOnlyExpenseBook newData) {
-        versionedExpenseBook.resetData(newData);
-        indicateExpenseBookChanged();
-    }
 
     @Override
     public ReadOnlyExpenseBook getExpenseBook() {

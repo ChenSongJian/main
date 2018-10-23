@@ -2,9 +2,10 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EXPENSE_CATEGORY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EXPENSE_VALUE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EXPENSE_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EXPENSE_VALUE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;

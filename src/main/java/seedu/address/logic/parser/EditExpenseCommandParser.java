@@ -31,26 +31,30 @@ public class EditExpenseCommandParser implements Parser<EditExpenseCommand> {
      */
     public EditExpenseCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_EXPENSE_CATEGORY, PREFIX_EXPENSE_DATE, PREFIX_EXPENSE_VALUE, PREFIX_TAG);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_EXPENSE_CATEGORY,
+                PREFIX_EXPENSE_DATE, PREFIX_EXPENSE_VALUE, PREFIX_TAG);
 
         Index index;
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditExpenseCommand.MESSAGE_USAGE), pe);
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditExpenseCommand.MESSAGE_USAGE), pe);
         }
 
         EditExpenseDescriptor editExpenseDescriptor = new EditExpenseDescriptor();
         if (argMultimap.getValue(PREFIX_EXPENSE_CATEGORY).isPresent()) {
-            editExpenseDescriptor.setExpenseCategory(ParserUtil.parseExpenseCategory(argMultimap.getValue(PREFIX_EXPENSE_CATEGORY).get()));
+            editExpenseDescriptor.setExpenseCategory(
+                    ParserUtil.parseExpenseCategory(argMultimap.getValue(PREFIX_EXPENSE_CATEGORY).get()));
         }
         if (argMultimap.getValue(PREFIX_EXPENSE_DATE).isPresent()) {
-            editExpenseDescriptor.setExpenseDate(ParserUtil.parseExpenseDate(argMultimap.getValue(PREFIX_EXPENSE_DATE).get()));
+            editExpenseDescriptor.setExpenseDate(
+                    ParserUtil.parseExpenseDate(argMultimap.getValue(PREFIX_EXPENSE_DATE).get()));
         }
         if (argMultimap.getValue(PREFIX_EXPENSE_VALUE).isPresent()) {
-            editExpenseDescriptor.setExpenseValue(ParserUtil.parseExpenseValue(argMultimap.getValue(PREFIX_EXPENSE_VALUE).get()));
+            editExpenseDescriptor.setExpenseValue(
+                    ParserUtil.parseExpenseValue(argMultimap.getValue(PREFIX_EXPENSE_VALUE).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editExpenseDescriptor::setTags);
 

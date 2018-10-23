@@ -2,14 +2,13 @@ package seedu.address.model.expense;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import seedu.address.model.tag.Tag;
 
@@ -36,7 +35,9 @@ public class Expense implements Comparable<Expense> {
         this.tags.addAll(tags);
     }
 
-    public ExpenseCategory getExpenseCategory() { return this.expenseCategory; }
+    public ExpenseCategory getExpenseCategory() {
+        return this.expenseCategory;
+    }
 
     public ExpenseDate getExpenseDate() {
         return this.expenseDate;

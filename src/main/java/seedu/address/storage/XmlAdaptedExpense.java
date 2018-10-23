@@ -77,7 +77,8 @@ public class XmlAdaptedExpense {
         }
 
         if (category == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ExpenseCategory.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ExpenseCategory.class.getSimpleName()));
         }
         if (!ExpenseCategory.isValidExpenseCategory(category)) {
             throw new IllegalValueException(ExpenseCategory.MESSAGE_EXPENSE_CATEGORY_CONSTRAINTS);
@@ -85,7 +86,8 @@ public class XmlAdaptedExpense {
         final ExpenseCategory modelCategory = new ExpenseCategory(category);
 
         if (date == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ExpenseDate.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ExpenseDate.class.getSimpleName()));
         }
         if (!ExpenseDate.isValidDate(date)) {
             throw new IllegalValueException(ExpenseDate.MESSAGE_EXPENSE_DATE_CONSTRAINTS);
@@ -93,7 +95,8 @@ public class XmlAdaptedExpense {
         final ExpenseDate modelDate = new ExpenseDate(date);
 
         if (value == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ExpenseValue.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ExpenseValue.class.getSimpleName()));
         }
         if (!ExpenseValue.isValidExpenseValue(value)) {
             throw new IllegalValueException(ExpenseValue.MESSAGE_EXPENSE_VALUE_CONSTRAINTS);

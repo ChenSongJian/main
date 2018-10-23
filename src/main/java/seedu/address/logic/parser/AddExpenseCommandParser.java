@@ -20,7 +20,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Parses input arguments and creates a new AddExpenseCommand object
  */
-public class AddExpenseCommandParser implements Parser<AddExpenseCommand>{
+public class AddExpenseCommandParser implements Parser<AddExpenseCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddExpenseCommand
@@ -28,15 +28,16 @@ public class AddExpenseCommandParser implements Parser<AddExpenseCommand>{
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddExpenseCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_EXPENSE_CATEGORY, PREFIX_EXPENSE_VALUE, PREFIX_EXPENSE_DATE, PREFIX_TAG);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_EXPENSE_CATEGORY,
+                PREFIX_EXPENSE_VALUE, PREFIX_EXPENSE_DATE, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_EXPENSE_CATEGORY, PREFIX_EXPENSE_VALUE, PREFIX_EXPENSE_DATE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddExpenseCommand.MESSAGE_USAGE));
         }
 
-        ExpenseCategory expenseCategory = ParserUtil.parseExpenseCategory(argMultimap.getValue(PREFIX_EXPENSE_CATEGORY).get());
+        ExpenseCategory expenseCategory =
+                ParserUtil.parseExpenseCategory(argMultimap.getValue(PREFIX_EXPENSE_CATEGORY).get());
         ExpenseDate expenseDate = ParserUtil.parseExpenseDate(argMultimap.getValue(PREFIX_EXPENSE_DATE).get());
         ExpenseValue expenseValue = ParserUtil.parseExpenseValue(argMultimap.getValue(PREFIX_EXPENSE_VALUE).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));

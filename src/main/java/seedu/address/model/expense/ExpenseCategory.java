@@ -3,6 +3,10 @@ package seedu.address.model.expense;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents an Expense's category in the expense book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidExpenseCategory(String)}
+ */
 public class ExpenseCategory {
     public static final String MESSAGE_EXPENSE_CATEGORY_CONSTRAINTS =
             "Expense category should only contain alphabets.";
@@ -25,7 +29,9 @@ public class ExpenseCategory {
     /**
      * Returns true if a given string is a valid category.
      */
-    public static boolean isValidExpenseCategory(String test) { return test.matches(EXPENSE_CATEGORY_VALIDATION_REGEX);}
+    public static boolean isValidExpenseCategory(String test) {
+        return test.matches(EXPENSE_CATEGORY_VALIDATION_REGEX);
+    }
 
     @Override
     public String toString() {

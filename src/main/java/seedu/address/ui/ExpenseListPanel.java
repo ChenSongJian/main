@@ -11,8 +11,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.commons.events.ui.ExpensePanelSelectionChangedEvent;
+import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.model.expense.Expense;
 
 /**
@@ -33,7 +33,7 @@ public class ExpenseListPanel extends UiPart<Region> {
 
     private void setConnections(ObservableList<Expense> expenseList) {
         expenseListView.setItems(expenseList);
-        expenseListView.setCellFactory(listView -> new expenseListViewCell());
+        expenseListView.setCellFactory(listView -> new ExpenseListViewCell());
         setEventHandlerForSelectionChangeEvent();
     }
 
@@ -66,7 +66,7 @@ public class ExpenseListPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code PersonCard}.
      */
-    class expenseListViewCell extends ListCell<Expense> {
+    class ExpenseListViewCell extends ListCell<Expense> {
         @Override
         protected void updateItem(Expense expense, boolean empty) {
             super.updateItem(expense, empty);

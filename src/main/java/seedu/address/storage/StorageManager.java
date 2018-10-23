@@ -43,7 +43,9 @@ public class StorageManager extends ComponentManager implements Storage {
 
     private GitHubStorage gitHubStorage;
 
-    public StorageManager(AddressBookStorage addressBookStorage, ExpenseBookStorage expenseBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(AddressBookStorage addressBookStorage,
+                          ExpenseBookStorage expenseBookStorage,
+                          UserPrefsStorage userPrefsStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.expenseBookStorage = expenseBookStorage;

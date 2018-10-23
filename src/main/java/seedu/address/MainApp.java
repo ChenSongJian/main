@@ -68,7 +68,7 @@ public class MainApp extends Application {
         userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new XmlAddressBookStorage(userPrefs.getAddressBookFilePath());
         ExpenseBookStorage expenseBookStorage = new XmlExpenseBookStorage(userPrefs.getExpenseBookFilePath());
-        storage = new StorageManager(addressBookStorage, expenseBookStorage,userPrefsStorage);
+        storage = new StorageManager(addressBookStorage, expenseBookStorage, userPrefsStorage);
 
         initLogging(config);
 

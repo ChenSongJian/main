@@ -14,6 +14,9 @@ import seedu.address.model.task.Task;
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
+    Predicate<Expense> PREDICATE_SHOW_ALL_EXPENSES = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
     //@@author luhan02
@@ -23,6 +26,9 @@ public interface Model {
 
     /** Clears existing backing model and replaces with the provided new data. */
     void resetData(ReadOnlyAddressBook newData);
+
+    /** Clears existing expense model and replaces with the provided new data. */
+    void resetData(ReadOnlyExpenseBook newData);
 
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
@@ -151,11 +157,6 @@ public interface Model {
     void addEvent(Event event);
 
     //@@author ChenSongJian
-    /** {@code Predicate} that always evaluate to true */
-    Predicate<Expense> PREDICATE_SHOW_ALL_EXPENSES = unused -> true;
-
-    /** Clears existing backing model and replaces with the provided new data. */
-    void resetData(ReadOnlyExpenseBook newData);
 
     /** Returns the ExpenseBook */
     ReadOnlyExpenseBook getExpenseBook();

@@ -10,6 +10,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.expense.exceptions.ExpenseNotFoundException;
 
+/**
+ * A list of expense that does not allow nulls.
+ *
+ * Supports a minimal set of list operations.
+ **/
 public class ExpenseList implements Iterable<Expense> {
 
     private final ObservableList<Expense> internalList = FXCollections.observableArrayList();
@@ -49,10 +54,6 @@ public class ExpenseList implements Iterable<Expense> {
         }
     }
 
-    public void setExpenses(ExpenseList replacement) {
-        requireNonNull(replacement);
-        internalList.setAll(replacement.internalList);
-    }
 
     /**
      * Replaces the contents of this list with {@code expenses}.
@@ -86,17 +87,19 @@ public class ExpenseList implements Iterable<Expense> {
         return internalList.hashCode();
     }
 
-    private void insertionSort(ObservableList<Expense> internalList){
+    /**
+     * @param internalList list of expenses to be sorted
+     */
+    private void insertionSort(ObservableList<Expense> internalList) {
         int n = internalList.size();
         for (int i = 1; i < n; i++) {
             Expense key = internalList.get(i);
             int j = i - 1;
-            while (j >= 0 && internalList.get(j).compareTo(key) > 0)
-            {
-                internalList.set(j + 1,internalList.get(j));
+            while (j >= 0 && internalList.get(j).compareTo(key) > 0) {
+                internalList.set(j + 1, internalList.get(j));
                 j = j - 1;
             }
-            internalList.set(j + 1,key);
+            internalList.set(j + 1, key);
         }
 
     }

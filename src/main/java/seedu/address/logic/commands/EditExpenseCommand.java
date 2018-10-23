@@ -85,9 +85,12 @@ public class EditExpenseCommand extends Command {
     private static Expense createEditedExpense(Expense expenseToEdit, EditExpenseDescriptor editExpenseDescriptor) {
         assert expenseToEdit != null;
 
-        ExpenseCategory updatedExpenseCategory = editExpenseDescriptor.getExpenseCategory().orElse(expenseToEdit.getExpenseCategory());
-        ExpenseDate updatedExpenseDate = editExpenseDescriptor.getExpenseDate().orElse(expenseToEdit.getExpenseDate());
-        ExpenseValue updatedExpenseValue = editExpenseDescriptor.getExpenseValue().orElse(expenseToEdit.getExpenseValue());
+        ExpenseCategory updatedExpenseCategory = editExpenseDescriptor.getExpenseCategory()
+                .orElse(expenseToEdit.getExpenseCategory());
+        ExpenseDate updatedExpenseDate = editExpenseDescriptor.getExpenseDate()
+                .orElse(expenseToEdit.getExpenseDate());
+        ExpenseValue updatedExpenseValue = editExpenseDescriptor.getExpenseValue()
+                .orElse(expenseToEdit.getExpenseValue());
         Set<Tag> updatedTags = editExpenseDescriptor.getTags().orElse(expenseToEdit.getTags());
 
         return new Expense(updatedExpenseCategory, updatedExpenseDate, updatedExpenseValue, updatedTags);

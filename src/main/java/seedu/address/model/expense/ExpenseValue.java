@@ -28,7 +28,9 @@ public class ExpenseValue {
     /**
      * Returns true if a given string is a valid value with 2 decimal places.
      */
-    public static boolean isValidExpenseValue(String test) { return test.matches(EXPENSE_VALUE_VALIDATION_REGEX); }
+    public static boolean isValidExpenseValue(String test) {
+        return test.matches(EXPENSE_VALUE_VALIDATION_REGEX);
+    }
 
     @Override
     public String toString() {
