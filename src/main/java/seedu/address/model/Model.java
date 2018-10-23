@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.event.Event;
+import seedu.address.model.expense.Expense;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 
@@ -148,4 +149,66 @@ public interface Model {
      * {@code event} must not already exist in the student planner.
      */
     void addEvent(Event event);
+
+    //@@author ChenSongJian
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Expense> PREDICATE_SHOW_ALL_EXPENSES = unused -> true;
+
+    /** Clears existing backing model and replaces with the provided new data. */
+    void resetData(ReadOnlyExpenseBook newData);
+
+    /** Returns the ExpenseBook */
+    ReadOnlyExpenseBook getExpenseBook();
+
+    /**
+     * Deletes the given expense.
+     * The expense must exist in the address book.
+     */
+    void deleteExpense(Expense target);
+
+    /**
+     * Adds the given expense.
+     */
+    void addExpense(Expense expense);
+
+    /**
+     * Replaces the given expense {@code target} with {@code editedExpense}.
+     * {@code target} must exist in the expense book.
+     */
+    void updateExpense(Expense target, Expense editedExpense);
+
+    /** Returns an unmodifiable view of the filtered expense list */
+    ObservableList<Expense> getFilteredExpenseList();
+
+    /**
+     * Updates the filter of the filtered expense list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredExpenseList(Predicate<Expense> predicate);
+
+    /**
+     * Returns true if the model has previous address book states to restore.
+     */
+    boolean canUndoExpenseBook();
+
+    /**
+     * Returns true if the model has undone address book states to restore.
+     */
+    boolean canRedoExpenseBook();
+
+    /**
+     * Restores the model's address book to its previous state.
+     */
+    void undoExpenseBook();
+
+    /**
+     * Restores the model's address book to its previously undone state.
+     */
+    void redoExpenseBook();
+
+    /**
+     * Saves the current expense book state for undo/redo.
+     */
+    void commitExpenseBook();
+    //@@author
 }

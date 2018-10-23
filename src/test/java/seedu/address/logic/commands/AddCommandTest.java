@@ -20,8 +20,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyExpenseBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.event.Event;
+import seedu.address.model.expense.Expense;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 import seedu.address.testutil.PersonBuilder;
@@ -216,6 +218,66 @@ public class AddCommandTest {
         public boolean hasEvent(Event event) {
             throw new AssertionError("This method should not be called.");
         }
+
+
+        //======== Expense ============================================================================================
+
+        @Override
+        public void resetData(ReadOnlyExpenseBook newData) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyExpenseBook getExpenseBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteExpense(Expense target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addExpense(Expense expense) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateExpense(Expense target, Expense editedExpense) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Expense> getFilteredExpenseList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredExpenseList(Predicate<Expense> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean canUndoExpenseBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean canRedoExpenseBook() { throw new AssertionError("This method should not be called."); }
+
+        @Override
+        public void undoExpenseBook() { throw new AssertionError("This method should not be called."); }
+
+        @Override
+        public void redoExpenseBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void commitExpenseBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**
