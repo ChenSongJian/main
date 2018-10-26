@@ -8,8 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.chart.PieChart;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
@@ -46,10 +46,16 @@ public class MonthlyExpenseWindow extends UiPart<Stage> {
         displayMonthlyData(updatePieChart(monthlyData));
     }
 
+    /**
+     * updates the pie chart with the monthly expense data
+     * @param monthlyData the values of each category for the selected month
+     * @return
+     */
     public PieChart updatePieChart(HashMap<String, String> monthlyData) {
         ArrayList<PieChart.Data> pieChartDataList = new ArrayList<>();
         for (HashMap.Entry<String, String> entry : monthlyData.entrySet()) {
-            pieChartDataList.add(new PieChart.Data(entry.getKey() + ": $" + entry.getValue(), Double.parseDouble(entry.getValue())));
+            pieChartDataList.add(new PieChart.Data(entry.getKey() + ": $"
+                    + entry.getValue(), Double.parseDouble(entry.getValue())));
         }
         ObservableList<PieChart.Data> observablePieChartDataList = FXCollections.observableList(pieChartDataList);
         PieChart pieChart = new PieChart(observablePieChartDataList);
@@ -57,6 +63,10 @@ public class MonthlyExpenseWindow extends UiPart<Stage> {
         return pieChart;
     }
 
+    /**
+     * displays the monthly data in a new window
+     * @param pieChart the pie chart of expense value for each category
+     */
     public void displayMonthlyData (PieChart pieChart) {
         AnchorPane anchorPane = new AnchorPane(pieChart);
         Scene scene = new Scene(anchorPane);

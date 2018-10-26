@@ -47,6 +47,11 @@ public class ExpenseTrendWindow extends UiPart<Stage> {
         displayExpenseTrendData(updateBarChart(expenseTrendData));
     }
 
+    /**
+     * updates the bar chart with the expense trend data
+     * @param expenseTrendData the total value of monthly expense for past 6 months
+     * @return
+     */
     public BarChart updateBarChart(TreeMap<String, Double> expenseTrendData) {
         XYChart.Series<String, Double> series = new XYChart.Series();
 
@@ -64,6 +69,10 @@ public class ExpenseTrendWindow extends UiPart<Stage> {
         return barChart;
     }
 
+    /**
+     * displays the expense trend data in a new window
+     * @param barChart the bar chart of the expense trend
+     */
     public void displayExpenseTrendData (BarChart barChart) {
         AnchorPane anchorPane = new AnchorPane(barChart);
         Scene scene = new Scene(anchorPane);
