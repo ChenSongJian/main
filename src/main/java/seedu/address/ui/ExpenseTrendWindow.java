@@ -4,17 +4,20 @@ import java.util.TreeMap;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.Scene;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import seedu.address.commons.core.LogsCenter;
 
+/**
+ * Controller for a expense trend page
+ */
 public class ExpenseTrendWindow extends UiPart<Stage> {
 
     private static final Logger logger = LogsCenter.getLogger(ExpenseTrendWindow.class);

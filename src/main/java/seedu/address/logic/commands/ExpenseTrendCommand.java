@@ -2,8 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.TreeMap;
 import java.time.YearMonth;
+import java.util.TreeMap;
 
 import javafx.collections.ObservableList;
 
@@ -38,7 +38,8 @@ public class ExpenseTrendCommand extends Command {
         for (int i = 0; i < 6; i++) {
             YearMonth selectedMonth = currentMonth.minusMonths(i);
             expenseTrendData.put(selectedMonth.toString(), INITIAL_EXPENSE_VALUE);
-            String formattedMonth = selectedMonth.toString().substring(5) + "/" + selectedMonth.toString().substring(0, 4);
+            String formattedMonth =
+                    selectedMonth.toString().substring(5) + "/" + selectedMonth.toString().substring(0, 4);
             for (Expense expense : expenseList) {
                 if (expense.getExpenseDate().toString().contains(formattedMonth)) {
                     double storedValue = expenseTrendData.get(selectedMonth.toString());
