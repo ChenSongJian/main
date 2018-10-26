@@ -100,15 +100,22 @@ public interface Model {
     void backupAddressBookLocal(Path backupPath);
 
     /**
-     * Restore address book from local storage.
+     * Backup current expense book to storage.
      */
-    void restoreAddressBookLocal(Path backupPath);
+    void backupExpenseBookLocal(Path backupPath);
 
     /**
      * Restore address book from storage.
      * @param restoredAddressBook
      */
     void restoreAddressBook(ReadOnlyAddressBook restoredAddressBook);
+
+    /**
+     * Restore address book from storage.
+     * @param restoredExpenseBook
+     */
+    void restoreExpenseBook(ReadOnlyExpenseBook restoredExpenseBook);
+
 
     //@@author luhan02
     /**
@@ -143,7 +150,7 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredTaskList(Predicate<Task> predicate);
-    //@@author
+    //@@author ian-tjahjono
 
     /**
      * Returns true if an event with the same identity as {@code event} exists in the student planner.
@@ -151,10 +158,19 @@ public interface Model {
     boolean hasEvent(Event event);
 
     /**
+     * Deletes the given event.
+     * The event must exist in the student planner.
+     */
+    void deleteEvent(Event target);
+
+    /**
      * Adds the given event.
      * {@code event} must not already exist in the student planner.
      */
     void addEvent(Event event);
+
+    /** Returns an unmodifiable view of the filtered event list */
+    ObservableList<Event> getFilteredEventList();
 
     //@@author ChenSongJian
 
@@ -213,3 +229,4 @@ public interface Model {
     void commitExpenseBook();
     //@@author
 }
+
