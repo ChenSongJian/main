@@ -8,13 +8,18 @@ import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddEventCommand;
+import seedu.address.logic.commands.AddExpenseCommand;
 import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.BackupCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.ClearExpenseCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteEventCommand;
+import seedu.address.logic.commands.DeleteExpenseCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.EditExpenseCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindAddressCommand;
 import seedu.address.logic.commands.FindCommand;
@@ -25,9 +30,11 @@ import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListTaskCommand;
 import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.RedoExpenseCommand;
 import seedu.address.logic.commands.RestoreCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.UndoExpenseCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -116,10 +123,33 @@ public class AddressBookParser {
 
         case DeleteTaskCommand.COMMAND_WORD:
             return new DeleteTaskCommandParser().parse(arguments);
-        //@@author
 
+        //@@author ian-tjahjono
         case AddEventCommand.COMMAND_WORD:
             return new AddEventCommandParser().parse(arguments);
+
+        case DeleteEventCommand.COMMAND_WORD:
+            return new DeleteEventCommandParser().parse(arguments);
+
+        //@@author ChenSongJian
+        case AddExpenseCommand.COMMAND_WORD:
+            return new AddExpenseCommandParser().parse(arguments);
+
+        case ClearExpenseCommand.COMMAND_WORD:
+            return new ClearExpenseCommand();
+
+        case DeleteExpenseCommand.COMMAND_WORD:
+            return new DeleteExpenseCommandParser().parse(arguments);
+
+        case EditExpenseCommand.COMMAND_WORD:
+            return new EditExpenseCommandParser().parse(arguments);
+
+        case RedoExpenseCommand.COMMAND_WORD:
+            return new RedoExpenseCommand();
+
+        case UndoExpenseCommand.COMMAND_WORD:
+            return new UndoExpenseCommand();
+
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }

@@ -35,7 +35,9 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private BrowserPanel browserPanel;
+    private ExpenseListPanel expenseListPanel;
     private PersonListPanel personListPanel;
+    private EventListPanel eventListPanel;
     private Config config;
     private UserPrefs prefs;
     private HelpWindow helpWindow;
@@ -50,7 +52,13 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
+    private StackPane expenseListPanelPlaceholder;
+
+    @FXML
     private StackPane personListPanelPlaceholder;
+
+    //@FXML
+    //private StackPane eventListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -122,8 +130,14 @@ public class MainWindow extends UiPart<Stage> {
         browserPanel = new BrowserPanel();
         browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
+        expenseListPanel = new ExpenseListPanel(logic.getFilteredExpenseList());
+        expenseListPanelPlaceholder.getChildren().add(expenseListPanel.getRoot());
+
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        //eventListPanel = new EventListPanel(logic.getFilteredEventList());
+        //eventListPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
 
         ResultDisplay resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -191,6 +205,12 @@ public class MainWindow extends UiPart<Stage> {
         return personListPanel;
     }
 
+    //public EventListPanel getEventListPanel() {return  eventListPanel;}
+
+    public ExpenseListPanel getExpenseListPanel() {
+        return expenseListPanel;
+    }
+
     void releaseResources() {
         browserPanel.freeResources();
     }
@@ -201,3 +221,4 @@ public class MainWindow extends UiPart<Stage> {
         handleHelp();
     }
 }
+
