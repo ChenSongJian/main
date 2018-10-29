@@ -25,7 +25,7 @@ import seedu.address.model.expense.Expense;
  */
 public class DeleteExpenseCommandTest {
 
-    private Model model = new ModelManager( new AddressBook(), getTypicalExpenseBook(),new UserPrefs());
+    private Model model = new ModelManager(new AddressBook(), getTypicalExpenseBook(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test

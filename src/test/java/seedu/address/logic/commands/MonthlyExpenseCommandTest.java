@@ -14,6 +14,9 @@ import seedu.address.model.ModelManager;
 import seedu.address.ui.testutil.EventsCollectorRule;
 
 public class MonthlyExpenseCommandTest {
+
+    private static final String SAMPLE_MONTH = "11/2018";
+
     @Rule
     public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
 
@@ -21,11 +24,11 @@ public class MonthlyExpenseCommandTest {
     private Model expectedModel = new ModelManager();
     private CommandHistory commandHistory = new CommandHistory();
 
-    private static final String SAMPLE_MONTH = "11/2018";
 
     @Test
     public void execute_help_success() {
-        assertCommandSuccess(new MonthlyExpenseCommand(SAMPLE_MONTH), model, commandHistory, MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(
+                new MonthlyExpenseCommand(SAMPLE_MONTH), model, commandHistory, MESSAGE_SUCCESS, expectedModel);
         assertTrue(eventsCollectorRule.eventsCollector.getMostRecent() instanceof DisplayMonthlyExpenseEvent);
         assertTrue(eventsCollectorRule.eventsCollector.getSize() == 1);
     }

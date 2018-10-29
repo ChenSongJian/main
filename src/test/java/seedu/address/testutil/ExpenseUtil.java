@@ -33,7 +33,7 @@ public class ExpenseUtil {
         sb.append(PREFIX_EXPENSE_VALUE + expense.getExpenseValue().expenseValue + " ");
         sb.append(PREFIX_EXPENSE_DATE + expense.getExpenseDate().expenseDate + " ");
         expense.getTags().stream().forEach(
-                s -> sb.append(PREFIX_TAG + s.tagName + " ")
+            s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
         return sb.toString();
     }
