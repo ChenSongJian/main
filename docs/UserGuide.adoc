@@ -57,23 +57,27 @@ priority to the Address Book.
 
 Format: `help`
 
-=== Adding a task: `add`
+=== Adding a task: `task`
 
 Adds a task to the schedule planner +
-Format: `add n/NAME [b/BODY] [s/START_DATETIME] [e/END_DATETIME] [t/TAG]... [p/PRIORITY]`
+Format: `task n/NAME b/BODY s/START_DATETIME e/END_DATETIME [t/TAG]... p/PRIORITY`
 
 [TIP]
-A task can have any number of tags (including 0)
+A task can have any number of tags (including 0). A task can only have its start and end DATE (without specific TIME).
+
+
+
+
 
 Examples:
 
-* `add n/Buy stationary tomorrow p/MED`
-* `add n/Attend PostModern JukeBox concert e/180918_2000 p/HIGH`
+* `task n/Buy stationary e/25/10 p/LOW`
+* `tsak n/Attend PostModern JukeBox concert e/180918_2000 p/HIGH`
 
-=== Listing all tasks : `list`
+=== Listing all tasks : `listTask`
 
 Shows a list of all tasks in the schedule planner. +
-Format: `list`
+Format: `listTask`
 
 === Editing a task : `edit`
 
@@ -173,7 +177,7 @@ Returns `pen` and `Pen pineapple pen`
 * `find concert meeting cute` +
 Returns any task having names or body `concert`, `meeting`, or `cute`
 
-=== Deleting a task : `delete`
+=== Deleting a task : `deleteTask`
 
 Deletes the specified task from the schedule planner. +
 Format: `delete INDEX`
@@ -186,11 +190,11 @@ Format: `delete INDEX`
 
 Examples:
 
-* `list` +
-`delete 2` +
+* `listTask` +
+`deleteTask 2` +
 Deletes the 2nd task in the schedule planner.
 * `find Pen` +
-`delete 1` +
+`deleteTask 1` +
 Deletes the 1st task in the results of the `find` command.
 
 === Listing entered commands : `history`
@@ -394,6 +398,7 @@ There is no need to save manually.
 
 Alert user when a deadline is due
 
+//@@author QzSG
 // tag::databackup[]
 === Backup data : `backup`
 
@@ -418,10 +423,10 @@ Creates an online backup to GitHub Gists using the provided personal access toke
 
 Allow user to restore data backups _locally_ or from online services.
 
-Format: `restore | [GITHUB ACCESS_TOKEN]`
+Format: `restore | [Service ACCESS_TOKEN_IF_REQUIRED]`
 
 ****
-* For GitHub online restore, a personal access token must be provided in `ACCESS_TOKEN`
+* For GitHub online restore, access token is not required! It is only required to create the secret gist during backup process
 ****
 
 Examples:
@@ -429,7 +434,13 @@ Examples:
 * `restore` +
 Restores Student Planner data using local backups in backup paths inside `preferences.json`.
 * `restore github ACCESS_TOKEN_HERE` +
-Restores Student Planner data on GitHub Gists using the provided personal access token.
+Restores Student Planner data on GitHub Gists.
+
+****
+* An failure message will be shown if no prior backups were made before restore command is used
+* If that happens, do proceed to first create a backup using `backup` command.
+****
+//@@author
 
 === Configure backup and restore settings `[coming in v2.0]`
 Allow user to configure backup settings (configure and save cloud services authentication tokens like GitHub gists or Google Drive, backup location) by calling `backup doctor`
@@ -466,10 +477,11 @@ e.g.`select 2`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
+//@@author QzSG
 * *Backup* : `backup | [GITHUB ACCESS_TOKEN]`
 e.g. `backup GITHUB MY_ACCESS_TOKEN`
-* *Restore* : `restore | [GITHUB ACCESS_TOKEN]`
-e.g. `restore GITHUB MY_ACCESS_TOKEN`
+* *Restore* : `restore | [SERVICE ACCESS_TOKEN]`
+e.g. `restore GITHUB`
 
 //@@author ChenSongJian
 * *AddExpense* : `addExpense c/CATEGORY v/VALUE d/DATE [t/TAG]...` +
@@ -485,3 +497,4 @@ e.g. `editExpense 2 c/Travel v/998.00`
 * *MonthlyExpense* : `monthlyExpense MM/YYYY` +
 e.g. `monthlyExpense 11/2018`
 //@@author
+

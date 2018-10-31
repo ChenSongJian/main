@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.commons.events.model.ExpenseBookChangedEvent;
+import seedu.address.commons.events.model.UserPrefsChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.events.storage.LocalBackupEvent;
 import seedu.address.commons.events.storage.LocalRestoreEvent;
@@ -14,12 +15,13 @@ import seedu.address.commons.events.storage.OnlineRestoreEvent;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyExpenseBook;
+import seedu.address.model.ReadOnlyTaskBook;
 import seedu.address.model.UserPrefs;
 
 /**
  * API of the Storage component
  */
-public interface Storage extends AddressBookStorage, ExpenseBookStorage, UserPrefsStorage {
+public interface Storage extends AddressBookStorage, ExpenseBookStorage, TaskBookStorage, UserPrefsStorage {
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
@@ -42,6 +44,8 @@ public interface Storage extends AddressBookStorage, ExpenseBookStorage, UserPre
      * Raises {@link DataSavingExceptionEvent} if there was an error during saving.
      */
     void handleAddressBookChangedEvent(AddressBookChangedEvent abce);
+
+    void handleUserPrefsChangedEvent(UserPrefsChangedEvent upce);
 
     void handleOnlineBackupEvent(OnlineBackupEvent obe);
 
@@ -76,5 +80,16 @@ public interface Storage extends AddressBookStorage, ExpenseBookStorage, UserPre
      * Raises {@link DataSavingExceptionEvent} if there was an error during saving.
      */
     //void handleExpenseBookLocalBackupEvent(ExpenseBookLocalBackupEvent abce);
+
+    //=========== Task ===================================================================================
+    @Override
+    Path getTaskBookFilePath();
+
+    @Override
+    Optional<ReadOnlyTaskBook> readTaskBook() throws DataConversionException, IOException;
+
+    @Override
+    void saveTaskBook(ReadOnlyTaskBook taskBook) throws IOException;
+
 
 }
