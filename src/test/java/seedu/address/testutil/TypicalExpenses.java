@@ -1,12 +1,5 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EXPENSE_CATEGORY_MRT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EXPENSE_CATEGORY_SHOPPING;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EXPENSE_DATE_MRT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EXPENSE_DATE_SHOPPING;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EXPENSE_VALUE_MRT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EXPENSE_VALUE_SHOPPING;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
