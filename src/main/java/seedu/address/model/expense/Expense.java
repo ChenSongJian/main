@@ -81,7 +81,7 @@ public class Expense implements Comparable<Expense> {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Date date1 = simpleDateFormat.parse(this.getExpenseDate().toString());
             Date date2 = simpleDateFormat.parse(expense.getExpenseDate().toString());
-            if (date2.compareTo(date1) == 0){
+            if (date2.compareTo(date1) == 0) {
                 Double value1 = Double.parseDouble(this.getExpenseValue().toString());
                 Double value2 = Double.parseDouble(expense.getExpenseValue().toString());
                 if (value2.compareTo(value1) == 0) {
