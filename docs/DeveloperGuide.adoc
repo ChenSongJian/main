@@ -510,9 +510,9 @@ The command then calls `EventsCenter#post(new DisplayExpenseTrendEvent(expenseTr
 
 The following sequence diagram shows how the expense trend operation works:
 
-image::ExpenseTrendSequenceDiagramPart1.png[width="800"]
+image::expenseTrendSequenceDiagramPart1.png[width="800"]
 
-image::ExpenseTrendSequenceDiagramPart2.png[width="800"]
+image::expenseTrendSequenceDiagramPart2.png[width="800"]
 
 ==== Monthly expense
 This function displays the expense value of each category for the selected month in a new window.
@@ -529,9 +529,9 @@ The rest are similar to the Expense Trend but the data were represented in a pie
 
 The following sequence diagram shows how the monthly expense operation works:
 
-image::MonthlyExpenseSequenceDiagramPart1.png[width="800"]
+image::monthlyExpenseSequenceDiagramPart1.png[width="800"]
 
-image::MonthlyExpenseSequenceDiagramPart2.png[width="800"]
+image::monthlyExpenseSequenceDiagramPart2.png[width="800"]
 // end::expensefeature[]
 //@@author
 
